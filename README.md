@@ -13,3 +13,7 @@ The app was built thanks to 100 days of Swift course. On days 23-26, Paul Hudson
 # Screen recording of the application
 
 
+https://github.com/leonardsangoroh/WebBrowserApp/assets/61079370/87f8bd66-322b-4fd1-baa8-34ff571e957b
+
+
+
