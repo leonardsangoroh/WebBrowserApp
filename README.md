@@ -17,4 +17,9 @@ The app was built thanks to 100 days of Swift course. On days 23-26, Paul Hudson
 https://github.com/leonardsangoroh/WebBrowserApp/assets/61079370/87f8bd66-322b-4fd1-baa8-34ff571e957b
 
 ## Screenshot - after adding the UIAlerController action sheet
-<img width="506" alt="Screenshot 2023-10-20 at 01 49 35" src="https://github.com/leonardsangoroh/WebBrowserApp/assets/61079370/c963da2b-d692-4414-b154-44cdef39a512">
+
+### Screenshot 1
+<img width="506" alt="Screenshot 2023-10-20 at 01 49 35" src="https://github.com/leonardsangoroh/WebBrowserApp/assets/61079370/16b91fb2-0860-470c-b53b-55d234219d9a">
+
+### Screenshot 2
+![Simulator Screen Shot - iPhone Xʀ - 2023-10-20 at 01 51 36](https://github.com/leonardsangoroh/WebBrowserApp/assets/61079370/084dfb01-228b-46c3-a5ba-dd25ccdb169d)
