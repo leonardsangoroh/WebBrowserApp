@@ -26,8 +26,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Open", style: .plain, target: self, action: #selector(openTapped))
-//
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Open", style: .plain, target: self, action: #selector(openTapped))
         //type URL - swift's way of storing location of files
         let url = URL(string:"https://github.com/leonardsangoroh")!
         //Wraps urls in a url request
@@ -36,7 +35,27 @@ class ViewController: UIViewController, WKNavigationDelegate {
         //Swipe left or right to move backwards or forwards
         webView.allowsBackForwardNavigationGestures = true
     }
+    
+    @objc func openTapped() {
+        ///nil for the message since the alert does not need one
+        let ac = UIAlertController(title: "Open page...", message: nil, preferredStyle: .actionSheet)
+        ///Handler method - used to respond to an event or user action in your application
+        ac.addAction(UIAlertAction(title: "apple.com", style: .default, handler: openPage))
+        ac.addAction(UIAlertAction(title: "github.com/leonardsangoroh", style: .default, handler: openPage))
+        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        //Important for iPad as it tells the position or where to anchor it on the iPad
+        ac.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+        present(ac, animated: true)
+    }
+    
+    func openPage(action: UIAlertAction) {
+        //force unwrap has been implemented twice
+        let url = URL(string: "https://" + action.title!)!
+        webView.load(URLRequest(url:url))
+    }
 
-
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        title = webView.title
+    }
 }
 
