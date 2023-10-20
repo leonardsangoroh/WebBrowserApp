@@ -29,7 +29,8 @@ https://github.com/leonardsangoroh/WebBrowserApp/assets/61079370/87f8bd66-322b-4
 
 ## Screenshot(s) - after implementing Toolbar
 
-<img width="506" alt="Screenshot 2023-10-20 at 15 16 14" src="https://github.com/leonardsangoroh/WebBrowserApp/assets/61079370/79773f6b-fba5-42ea-a9df-0249fbd9c489">
+<img width="506" alt="Screenshot 2023-10-20 at 02 30 58" src="https://github.com/leonardsangoroh/WebBrowserApp/assets/61079370/0362ce08-81e9-4125-be5b-301dd1d913ae">
+
 
 ## Screenshot(s) - after implementing ProgressView
 
