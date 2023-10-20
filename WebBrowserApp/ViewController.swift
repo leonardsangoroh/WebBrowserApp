@@ -12,6 +12,7 @@ import WebKit
 class ViewController: UIViewController, WKNavigationDelegate {
     
     var webView: WKWebView!
+    var progressView: UIProgressView!
     
     override func loadView() {
         //instance of WKWebView class
@@ -27,6 +28,24 @@ class ViewController: UIViewController, WKNavigationDelegate {
         super.viewDidLoad()
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Open", style: .plain, target: self, action: #selector(openTapped))
+        
+        ///Create UIProgressView instance
+        progressView = UIProgressView(progressViewStyle: .default)
+        
+        progressView.sizeToFit()
+        /// Create new UIBarButtonItem using the customView parameter
+        /// customView parameter is used to wrap the UIProgressView into UIBarButtonItem
+        let progressButton = UIBarButtonItem(customView: progressView)
+        
+        ///Toolbar
+        let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let refresh = UIBarButtonItem(barButtonSystemItem: .refresh, target: webView, action:#selector(webView.reload))
+        
+        toolbarItems = [progressButton, spacer ,refresh]
+        navigationController?.isToolbarHidden = false
+        
+        webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
+        
         //type URL - swift's way of storing location of files
         let url = URL(string:"https://github.com/leonardsangoroh")!
         //Wraps urls in a url request
@@ -56,6 +75,12 @@ class ViewController: UIViewController, WKNavigationDelegate {
 
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         title = webView.title
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "estimatedProgress" {
+            progressView.progress = Float(webView.estimatedProgress)
+        }
     }
 }
 
