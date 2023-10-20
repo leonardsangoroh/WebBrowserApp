@@ -13,6 +13,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
     
     var webView: WKWebView!
     var progressView: UIProgressView!
+    var websites = ["apple.com","github.com/leonardsangoroh"]
     
     override func loadView() {
         //instance of WKWebView class
@@ -47,7 +48,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
         webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
         
         //type URL - swift's way of storing location of files
-        let url = URL(string:"https://github.com/leonardsangoroh")!
+        let url = URL(string:"https://" + websites[0])!
         //Wraps urls in a url request
         webView.load(URLRequest(url:url))
         //Enables a property of the webview - BackForward Navigation
@@ -58,9 +59,13 @@ class ViewController: UIViewController, WKNavigationDelegate {
     @objc func openTapped() {
         ///nil for the message since the alert does not need one
         let ac = UIAlertController(title: "Open page...", message: nil, preferredStyle: .actionSheet)
-        ///Handler method - used to respond to an event or user action in your application
-        ac.addAction(UIAlertAction(title: "apple.com", style: .default, handler: openPage))
-        ac.addAction(UIAlertAction(title: "github.com/leonardsangoroh", style: .default, handler: openPage))
+        for website in websites {
+            ///Handler method - used to respond to an event or user action in your application
+            ac.addAction(UIAlertAction(title: website, style: .default, handler: openPage))
+        }
+
+       
+        
         ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         //Important for iPad as it tells the position or where to anchor it on the iPad
         ac.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
@@ -81,6 +86,21 @@ class ViewController: UIViewController, WKNavigationDelegate {
         if keyPath == "estimatedProgress" {
             progressView.progress = Float(webView.estimatedProgress)
         }
+    }
+    
+    ///Decides whether to allow or cancel a navigation
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction:WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy)->Void) {
+        let url = navigationAction.request.url
+        
+        if let host = url?.host {
+            for website in websites {
+                if host.contains(website) {
+                    decisionHandler(.allow)
+                    return
+                }
+            }
+        }
+        decisionHandler(.cancel)
     }
 }
 
