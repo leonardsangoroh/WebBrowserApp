@@ -13,7 +13,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
     
     var webView: WKWebView!
     var progressView: UIProgressView!
-    var websites = ["apple.com","github.com/leonardsangoroh"]
+    var websites = ["apple.com","github.com"]
     
     override func loadView() {
         //instance of WKWebView class
@@ -41,8 +41,10 @@ class ViewController: UIViewController, WKNavigationDelegate {
         ///Toolbar
         let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let refresh = UIBarButtonItem(barButtonSystemItem: .refresh, target: webView, action:#selector(webView.reload))
+        let back = UIBarButtonItem(barButtonSystemItem: .rewind, target: webView, action:#selector(goBack))
+        let forward = UIBarButtonItem(barButtonSystemItem: .fastForward, target: webView, action:#selector(goForward))
         
-        toolbarItems = [progressButton, spacer ,refresh]
+        toolbarItems = [back, forward, progressButton, spacer ,refresh]
         navigationController?.isToolbarHidden = false
         
         webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
@@ -102,5 +104,16 @@ class ViewController: UIViewController, WKNavigationDelegate {
         }
         decisionHandler(.cancel)
     }
-}
 
+    
+    ///goBack() function implemented in the back button on the toolbar
+    @objc func goBack() {
+        webView.goBack() // Navigate to the previous page.
+    }
+    ///goForward() function implemented in the forward button on the toolbar
+    @objc func goForward() {
+        webView.goForward() // Navigate to the next page.
+    }
+    
+
+}
