@@ -35,3 +35,8 @@ https://github.com/leonardsangoroh/WebBrowserApp/assets/61079370/87f8bd66-322b-4
 ## Screenshot(s) - after implementing ProgressView
 
 <img width="506" alt="Screenshot 2023-10-20 at 15 16 14" src="https://github.com/leonardsangoroh/WebBrowserApp/assets/61079370/9c02c029-806e-4b4b-a935-22f3cf2ab7f0">
+
+## Screenshot(s) - after adding back and forward button
+
+<img width="462" alt="Screenshot 2023-10-22 at 14 13 09" src="https://github.com/leonardsangoroh/WebBrowserApp/assets/61079370/c8f1e13e-faf8-4a13-aca4-9629759c944a">
+
