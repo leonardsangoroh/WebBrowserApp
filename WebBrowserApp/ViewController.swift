@@ -102,6 +102,8 @@ class ViewController: UIViewController, WKNavigationDelegate {
                 }
             }
         }
+        let acBlock = UIAlertController(title: "URL BLOCKED", message: "Wrong Url Selected", preferredStyle: .alert)
+        acBlock.addAction(UIAlertAction(title: "Retry", style: .default, handler: blockedUrl))
         decisionHandler(.cancel)
     }
 
@@ -113,6 +115,12 @@ class ViewController: UIViewController, WKNavigationDelegate {
     ///goForward() function implemented in the forward button on the toolbar
     @objc func goForward() {
         webView.goForward() // Navigate to the next page.
+    }
+    
+    @objc func blockedUrl(action:UIAlertAction) {
+        if webView.canGoBack {
+                webView.goBack()
+        }
     }
     
 
