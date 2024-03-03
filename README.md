@@ -9,9 +9,6 @@ The app was built thanks to 100 days of Swift course. On days 23-26, Paul Hudson
 - UIAlertController action sheets
 - UIProgressView
 
-# The following features/concepts were later built on top of the App
-
-
 # Screen recording of the application
 
 ## Screen recording - after the website has been loaded to the application
